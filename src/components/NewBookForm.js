@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-const NewBookForm = ({ addBook }) => {
+const NewBookForm = ({ dispatch }) => {
   const [title, setTitle] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault(); //防止Submit時更新頁面
-    addBook(title); //跟BookList裡的addBook()連結
+    dispatch({type: 'ADD_BOOK', book: { title }});
+    /*addBook(title); //跟BookList裡的addBook()連結 */
     setTitle(""); //案新增歌曲按鈕時自動清空text area
   };
   return (
