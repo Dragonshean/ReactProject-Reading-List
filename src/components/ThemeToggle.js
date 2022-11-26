@@ -22,7 +22,11 @@ export default ThemeToggle;
 const ThemeToggle = () => {
     const { toggleTheme } = useContext(ThemeContext)
     return ( 
-        <button onClick={toggleTheme}>Toggle the theme</button>
+        // <button onClick={toggleTheme}>Color Shift</button>  普通的按鈕
+        <div>
+            <input onClick={toggleTheme} type="checkbox" id="check1" className="toggle"/>
+            <label htmlFor="check1">Toggle to change theme</label>
+        </div>
     );
 }
 

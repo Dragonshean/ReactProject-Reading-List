@@ -15,8 +15,11 @@ const BookContextProvider = (props) => {
     const addBooks = (title) => {
         setBooks([...books, { title, id: v1() }]);
     }
+    const removeBooks = (id) => {
+        setBooks(books.filter(book => book.id !== id))
+    }
     return ( 
-        <BookContext.Provider value = {{books}}>
+        <BookContext.Provider value = {{books, addBooks, removeBooks}}>
             {props.children}
             <NewBookForm addBook={addBooks}/>
         </BookContext.Provider>

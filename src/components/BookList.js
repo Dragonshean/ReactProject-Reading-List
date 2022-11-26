@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { BookContext } from '../contexts/BookContext';
 import { ThemeContext } from '../contexts/ThemeContext';
+import BookDetails from '../components/BookDetails'
+
 
 /* Class Component 寫法
 import React, { Component } from 'react';
@@ -30,16 +32,18 @@ const BookList = () => {
     const { isLightTheme, light, dark } = useContext(ThemeContext);
     const { books } = useContext(BookContext);
     const theme = isLightTheme ? light : dark; 
-    return ( 
+    return books.length ? ( 
         <div className='book-list' style={{ color: theme.syntax, background: theme.bg}}>
             <ul>
                 {books.map( (book) => {
                     return (
-                        <li key={ book.id } style={{ background: theme.ui }}> { book.title } </li>
+                        <BookDetails book={ book } key={ book.id } />
                     )
                 })}
             </ul>
         </div>
+    ) : (
+        <div className='empty'> Well Done!! You have finished.</div>
     );
 }
 
